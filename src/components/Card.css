@@ -1,0 +1,69 @@
+.card {
+  width: 100%;
+  flex: 1;
+  /*position: absolute;*/
+
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 400ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+}
+
+.card__information {
+  padding: 22px 12px;
+}
+
+.card__image {
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  width: 350px;
+  height: 515px;
+
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card__label--dummy {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.card__label-text {
+  margin: 18px;
+  border: 3px solid;
+  border-radius: 4px;
+  display: inline-block;
+  text-transform: uppercase;
+  padding: 4px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: 28px;
+}
+
+.card__label-text--like {
+  transform: rotate(-15deg);
+  transform-origin: bottom;
+  border-color: rgb(81, 220, 135);
+  color: rgb(81, 220, 135);
+}
+
+.card__label-text--nope {
+  transform: rotate(15deg);
+  transform-origin: bottom;
+  border-color: rgb(255, 109, 88);
+  color: rgb(255, 109, 88);
+}
+
+.card__age {
+  margin-left: 4px;
+}

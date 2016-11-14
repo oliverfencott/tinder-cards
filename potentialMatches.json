@@ -1,0 +1,90 @@
+[
+  {
+    "name": "Janine",
+    "age": 22,
+    "sharedInterestsCount": 1,
+    "mutualFriendsCount": 1,
+    "profileImage": "https://placehold.it/350x515",
+    "interestedInYou": false
+  },
+  {
+    "name": "Emma",
+    "age": 19,
+    "sharedInterestsCount": 0,
+    "mutualFriendsCount": 0,
+    "profileImage": "https://placehold.it/350x515",
+    "interestedInYou": false
+  },
+  {
+    "name": "Molly",
+    "age": 26,
+    "sharedInterestsCount": 0,
+    "mutualFriendsCount": 0,
+    "profileImage": "https://placehold.it/350x515",
+    "interestedInYou": true
+  },
+  {
+    "name": "Sam",
+    "age": 31,
+    "sharedInterestsCount": 1,
+    "mutualFriendsCount": 0,
+    "profileImage": "https://placehold.it/350x515",
+    "interestedInYou": false
+  },
+  {
+    "name": "Joely",
+    "age": 28,
+    "sharedInterestsCount": 1,
+    "mutualFriendsCount": 2,
+    "profileImage": "https://placehold.it/350x515",
+    "interestedInYou": false
+  },
+  {
+    "name": "Yvette",
+    "age": 26,
+    "sharedInterestsCount": 4,
+    "mutualFriendsCount": 0,
+    "profileImage": "https://placehold.it/350x515",
+    "interestedInYou": false
+  },
+  {
+    "name": "Cameron",
+    "age": 18,
+    "sharedInterestsCount": 0,
+    "mutualFriendsCount": 2,
+    "profileImage": "https://placehold.it/350x515",
+    "interestedInYou": true
+  },
+  {
+    "name": "Ashley",
+    "age": 25,
+    "sharedInterestsCount": 2,
+    "mutualFriendsCount": 0,
+    "profileImage": "https://placehold.it/350x515",
+    "interestedInYou": false
+  },
+  {
+    "name": "Michelle",
+    "age": 22,
+    "sharedInterestsCount": 1,
+    "mutualFriendsCount": 0,
+    "profileImage": "https://placehold.it/350x515",
+    "interestedInYou": false
+  },
+  {
+    "name": "Gal",
+    "age": 21,
+    "sharedInterestsCount": 8,
+    "mutualFriendsCount": 2,
+    "profileImage": "https://placehold.it/350x515",
+    "interestedInYou": true
+  },
+  {
+    "name": "Keira",
+    "age": 22,
+    "sharedInterestsCount": 1,
+    "mutualFriendsCount": 1,
+    "profileImage": "https://placehold.it/350x515",
+    "interestedInYou": true
+  }
+]

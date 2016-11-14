@@ -1,0 +1,31 @@
+/*iPhone 6 width: 375px;*/
+/*iPhone 6 height: 667px;*/
+
+body, html {
+  font-family: 'Montserrat', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.app-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+.phone-container {
+  background-color: #F5F5F5;
+  width: 375px;
+  height: 667px;
+  padding: 22px 12px;
+}

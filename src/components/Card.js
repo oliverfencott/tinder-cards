@@ -1,27 +1,40 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import './Card.css';
 
 class Card extends Component {
   constructor() {
     super();
 
-    this.state = {
-      dragging: false,
-      translateX: 0,
-      translateY: 0
-    };
+    // this.state = {
+    //   dragging: false,
+    //   percentage: 0,
+    //   translateY: 0,
+    //   clientX: 0,
+    //   clientY: 0,
+    //   rotationMultiplier: 1
+    // };
 
     this._centerPoint = 0;
     this._rotationAnchor = 0;
     this._leftEdge = 0;
     this._rightEdge = 0;
+    this._width = 0;
 
+    this._calculatePercentageMoved = this._calculatePercentageMoved.bind(this);
     this._handleMouseUp = this._handleMouseUp.bind(this);
     this._handleMouseDown = this._handleMouseDown.bind(this);
     this._handleMouseMove = this._handleMouseMove.bind(this);
     this._componentDimensions = this._componentDimensions.bind(this);
     this._handleTouchStart = this._handleTouchStart.bind(this);
     this._handleTouchMove = this._handleTouchMove.bind(this);
+  }
+
+  shouldComponentUpdate(nextProps) {
+    return nextProps.percentage !== this.props.percentage;
+  }
+
+  _calculatePercentageMoved(clientX) {
+    return (clientX - this._startXPosition) / (this._width / 100);
   }
 
   _handleTouchStart(event) {
@@ -33,82 +46,89 @@ class Card extends Component {
   }
 
   _handleMouseDown(event) {
+    const { onUpdateCardPosition, id } = this.props;
     const { clientX, clientY } = event;
 
     this._startXPosition = clientX;
     this._startYPosition = clientY;
 
-    this.setState({
+    onUpdateCardPosition(id, {
       dragging: true,
-      rotationMultiplier: clientY >= this._centerPoint ? 1 : -1
+      rotationMultiplier: clientY >= this._centerPoint ? 1 : -1,
+      percentage: 0
     });
   }
 
   _handleMouseUp() {
-    const { dragging } = this.state;
+    const { onUpdateCardPosition, id } = this.props;
+    const { dragging } = this.props;
 
     if (dragging) {
       this._startXPosition = 0;
       this._startYPosition = 0;
 
-      this.setState({
+      onUpdateCardPosition(id, {
         dragging: false,
-        translateX: 0,
-        translateY: 0
+        translateY: 0,
+        percentage: 0
       });
     }
   }
 
   _handleMouseMove(event) {
-    const { dragging } = this.state;
+    const { onUpdateCardPosition, id } = this.props;
+    const { dragging } = this.props;
     const { clientX, clientY } = event;
 
     if (dragging) {
-      this.setState({
-        clientX,
+      onUpdateCardPosition(id, {
         clientY,
-        translateX: clientX - this._startXPosition,
         translateY: clientY - this._startYPosition,
+        percentage: this._calculatePercentageMoved(clientX)
       });
     }
   }
 
   _componentDimensions(cmpt) {
-    const {
-      top,
-      height,
-      left,
-      width
-    } = cmpt.getBoundingClientRect();
+    if (cmpt) {
+      const {
+        top,
+        height,
+        left,
+        width
+      } = cmpt.getBoundingClientRect();
 
-    this._centerPoint = top + (height / 2);
-    this._rotationAnchor = ((left - (width / 2)) / 3600);
-    this._leftEdge = left;
-    this._rightEdge = left + width;
+      this._centerPoint = top + (height / 2);
+      this._rotationAnchor = ((left - (width / 2)) / 3600);
+      this._leftEdge = left;
+      this._rightEdge = left + width;
+
+      this._width = width;
+    }
   }
 
   _getContainerStyle() {
     const {
-      translateX,
+      percentage,
       translateY,
       dragging,
       rotationMultiplier
-    } = this.state;
+    } = this.props;
 
     return {
       transform: `
-      translateX(${translateX}px)
+      translateX(${percentage}%)
       translateY(${translateY}px)
       rotate(${(
-        (this._rotationAnchor * -1) * translateX
+        (this._rotationAnchor * -1) * percentage
       ) * rotationMultiplier}deg)`,
       transition: dragging ? 'none' : undefined
     };
   }
 
   _getLabelOpacity() {
-    const { translateX } = this.state;
-    const opacity = (((this._rotationAnchor) * translateX) / 10);
+    const { percentage } = this.props;
+    const opacity = (((this._rotationAnchor) * percentage) / 10);
 
     return {
       dislikeOpacity: {
@@ -182,5 +202,13 @@ class Card extends Component {
     );
   }
 }
+
+Card.propTypes = {
+  name: PropTypes.string,
+  age: PropTypes.number,
+  id: PropTypes.string,
+  profileImage: PropTypes.string,
+  onUpdateCardPosition: PropTypes.func
+};
 
 export default Card;

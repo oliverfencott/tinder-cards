@@ -3,6 +3,7 @@
 
 body, html {
   font-family: 'Montserrat', sans-serif;
+  background-color: #FFFFFF;
 }
 
 * {
@@ -18,6 +19,7 @@ body, html {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  overflow-x: hidden;
 
   width: 100vw;
   height: 100vh;
@@ -28,4 +30,5 @@ body, html {
   width: 375px;
   height: 667px;
   padding: 22px 12px;
+  border-radius: 4px;
 }
